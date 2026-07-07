@@ -7,3 +7,7 @@ What is model?
 Model is the output of training process. consider it as some mathematival function that is created by the algorithm 
 
 dataset:- It is collection of data.
+
+DevOps and MLOps can co-exist in a company.
+example:- Netflix app:- follows SDLC
+recommendations engine for netflix:- this uses ML and MLOps.
