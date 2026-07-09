@@ -2,6 +2,8 @@ AV github link:- https://github.com/iam-veeramalla/mlops-zero-to-hero
 
 What is Machine learning?
 It is the process of training a machine or computer with huge amount of data, so that it identifies the patterns and predicts the output.
+It is the process of training a machine or computer with huge amount of data, so that it creates pattern from the data it is trained and whenever we give input using
+those patterns it predicts the output.
 
 What is model?
 Model is the output of training process. consider it as some mathematival function that is created by the algorithm 
