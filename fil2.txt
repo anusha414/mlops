@@ -1,1 +1,5 @@
 https://github.com/iam-veeramalla/hello-world-mlops
+
+How MLOps helps datascientists:-
+
+1. To train and test the model involves a lot of manual activities
