@@ -1,0 +1,17 @@
+What is MLFlow?
+MLflow is an open-source platform for managing the complete machine learning lifecycle, from experimentation and model training to deployment and monitoring.
+It is mainly used for experiment tracking, versioning the model, model packaging and model deployment.
+
+Why do we need MLflow? why cant we store the experiment tracking data in excel?
+Most of the data scientists use excel or other notebooks to store the data related to experiment.
+
+Drawbacks of storing the data in excel are:-
+1. Prone to human errors, data scientists might forget to record the data in excel.
+2. no centralized approach, different excel for different models.
+3. No standard practice, each excel might be different from one another
+
+MLFlow automates addition of data, it has a UI, easy to compare the 2 experiments and results will be shown without any issue.
+
+1. MLflow is shared responsibility between MLOps and data scientists.
+2. MLops engineers setup the centralized MLflow server either on aVM or an serverless functions like lambda, k8s
+3. data scientists have to use MLflow model within their scripts and record the data, so the data is directly added to the MLflow servers setup by Mlops
