@@ -15,3 +15,30 @@ MLFlow automates addition of data, it has a UI, easy to compare the 2 experiment
 1. MLflow is shared responsibility between MLOps and data scientists.
 2. MLops engineers setup the centralized MLflow server either on aVM or an serverless functions like lambda, k8s
 3. data scientists have to use MLflow model within their scripts and record the data, so the data is directly added to the MLflow servers setup by Mlops
+
+MLFlow installation in local server or non production k8s:-
+
+1. Create a VM or k8s cluster.
+2. Install the MLfloee using helm charts.
+3. Expose the pod using port forward and access the MLflow via localhost and port
+
+MLFlow installation for production k8s:-
+
+1. Create a RDS instance with postgres sql.
+2. Connect to the RDS instance from local machine using psql cli because we cannot directly connect to rds instance from AWS console
+NOTE:- When u try to connect from local machine it will throw error because RDS istance is in VPC and only another ec2 instance from the same subnet will be able to connect
+directly, If you want to connect from local machine enable public access to rds instance.
+3. Once it has been connected create a mlflow database do not use default database
+4. Create a user and provide all database privileges to that user
+5. Create a k8s cluster and install mlflow on that cluster but with database details like below
+helm install mlflow community-charts/mlflow \
+  --namespace mlflow \
+  --set backendStore.databaseMigration=true \
+  --set backendStore.postgres.enabled=true \
+  --set backendStore.postgres.host=your-postgres-host \
+  --set backendStore.postgres.port=5432 \
+  --set backendStore.postgres.database=mlflow \
+  --set backendStore.postgres.user=mlflow_user \
+  --set backendStore.postgres.password=your_secure_password
+6. Setup a loda balancer and ingress for the eks cluster and access the mlflow
+NOTE:- the pod contains a init container
