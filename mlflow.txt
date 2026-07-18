@@ -19,13 +19,16 @@ MLFlow automates addition of data, it has a UI, easy to compare the 2 experiment
 MLFlow installation in local server or non production k8s:-
 
 1. Create a VM or k8s cluster.
-2. Install the MLfloee using helm charts.
+2. Install the MLflow using helm charts.
 3. Expose the pod using port forward and access the MLflow via localhost and port
+
+NOTE:- we should use external database for MLflow because we are storing data related tp exxperiments and as pods are ephimeral in nature it is suggested to create rds instance and store data there.
+Also having mlflow in local server is of no use in real world scenario because it will be accessible only for the local server owner.
 
 MLFlow installation for production k8s:-
 
 1. Create a RDS instance with postgres sql.
-2. Connect to the RDS instance from local machine using psql cli because we cannot directly connect to rds instance from AWS console
+2. Connect to the RDS instance using endpoint and password of rds instance from local machine using psql cli because we cannot directly connect to rds instance from AWS console
 NOTE:- When u try to connect from local machine it will throw error because RDS istance is in VPC and only another ec2 instance from the same subnet will be able to connect
 directly, If you want to connect from local machine enable public access to rds instance.
 3. Once it has been connected create a mlflow database do not use default database
